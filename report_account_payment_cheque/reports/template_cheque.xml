@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="custom_header">
+        <div class="header">
+            <div class="row">
+                <div class="col-5">
+                    <img src='/report_account_payment_cheque/static/img/icon.png' width="200px" height="80px"/>
+                </div>
+                <div class="col-7" style="text-align: right; color:#000080;">
+                    <h4>مـؤسـسـة متاجـر العاصمـة الرقـميـة</h4>
+                    <h4>Digital Capital Stores Trading Est.</h4>
+                </div>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+            <t t-out="0"/>
+        </div>
+        <div class="footer o_standard_footer">
+            <div class="row">
+                <div class="col-3" style="border-right: 1px solid black;">
+                    <div class="mb-2">
+                        <img src='/report_account_payment_cheque/static/img/call.png' width="20px" height="20px"
+                             style="display: inline-block; margin-right: 2px;">+966 53 707 0742
+                        </img>
+                    </div>
+                    <div>
+                        <img src='/report_account_payment_cheque/static/img/web.png' width="20px" height="20px"
+                             style="display: inline-block; margin-right: 2px;">www.dc-stores.com
+                        </img>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <img src='/report_account_payment_cheque/static/img/location.png' width="40px" height="40px"
+                         style="display: inline-block;vertical-align: middle; margin-left: 4px;"/>
+                </div>
+                <div class="col-8" style="font-size: 12px;">
+                    <div class="mb-2" style="direction:rtl; text-align: right; white-space: nowrap;">المملكة العربية
+                        السعودية-الرياض--س.ت:1011140557-حي المربع-شارع جابر بن رشيد-عمارة
+                        الرصيص-الدور الخامس مكتب 511
+                    </div>
+                    <div style="white-space: nowrap; margin-left: -30px">
+                        Kingdom of Saudi Arabia-CR:1011140557-AlMurabba Area-Jaber bin Rashid St-Al Rasis Building
+                        -Fifth floor-Office 511
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="account_payment_cheque">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="report_account_payment_cheque.custom_header">
+
+                    <div class="page">
+                        <!--                         style="opacity:1; top:0; left:0; text-align:center; position: absolute; z-index:99; background-image: url('/report_account_payment_cheque/static/img/icon.png'); background-size: 100% 100%; background-opacity: 0.5;">-->
+                        <div class="row mb-2">
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <div>
+                                    <strong style="padding-right:12px;">No.</strong>
+                                    <span style="color:red;" t-field="o.name"/>
+                                </div>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                <strong>رقم</strong>
+                            </div>
+                            <div class="col-auto col-5 mw-100 mb-2"/>
+                            <div class="col-auto col-3 mw-50 mb-3"
+                                 style="background-color: #000080; text-algin:right; direction:rtl">
+                                <div style="font-weight:bold; color:white; padding-bottom:4px; text-align:center;">سـنـد
+                                    قـبـض
+                                </div>
+                                <div style="font-weight:bold; color:white; padding-bottom:6px; text-align:center;">
+                                    RECEIPT VOUCHER
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                <div>
+                                    <strong style="padding-right:12px;">Date:</strong>
+                                </div>
+                            </div>
+                            <div class="col-auto col-2 mw-100 mb-2">
+                                <div>
+                                    <span t-field="o.date"/>
+                                </div>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                <div>
+                                    :
+                                    <strong style="padding-right:12px;">التاريخ</strong>
+                                </div>
+                            </div>
+                            <div class="col-auto col-4 mw-100 mb-2"/>
+                            <div class="col-auto col-2 mw-100 mb-2">
+                                <div style="background-color: #D5DBDB;">
+                                    <strong style="margin-right:80px">SR</strong>
+                                    <strong>ريال</strong>
+                                </div>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2"/>
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                <div style="background-color: #D5DBDB;">
+                                    <strong style="margin-right:40px">h</strong>
+                                    <strong>هـ</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <div>
+                                    <strong>Received from Mr/Mrs:</strong>
+                                </div>
+                            </div>
+                            <div class="col-auto col-6 mw-100 mb-2">
+                                <div style="text-align:center;" t-field="o.partner_id"/>
+                            </div>
+                            <div class="col-auto col-3 mw-100 mb-3">
+                                <div style="text-align:right;">
+                                    :
+                                    <strong style="direction:rtl;">استلمنا من السيد/السادة</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <div>
+                                    <strong>The Sum of:</strong>
+                                </div>
+                            </div>
+                            <div class="col-auto col-6 mw-100 mb-2">
+                                <div style="text-align:center;" t-field="o.amount"/>
+                            </div>
+                            <div class="col-auto col-3 mw-100 mb-3">
+                                <div style="text-align:right;">
+                                    :
+                                    <strong style="direction:rtl;">مبلغ وقدره</strong>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                <strong>Bank:</strong>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2">..................</div>
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                :
+                                <strong>بنك</strong>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                <strong>Date:</strong>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                ..................
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                :
+                                <strong style="text-align:right;">تاريخ</strong>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                <strong style="white-space: nowrap;">Cheque No.</strong>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2">..................</div>
+                            <div class="col-auto col-1 mw-100 mb-2" style="direction:rtl; text-align: right;">
+
+                                <span style="white-space: nowrap;">شيك رقم:</span>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2" style="margin-left:10px">
+                                <div style="border: 1px solid black; width: 20px; height: 20px;"/>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                <strong style="white-space:nowrap;">Cash نقدا</strong>
+                            </div>
+                            <div class="col-auto col-1 mw-100 mb-2" style="margin-left:10px">
+                                <div style="border: 1px solid black; width: 20px; height: 20px;"/>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-auto col-1 mw-100 mb-2">
+                                <div>
+                                    <strong>For:</strong>
+                                </div>
+                            </div>
+                            <div class="col-auto col-10 mw-100 mb-2">
+                                <div style="text-align:center;" t-field="o.ref"/>
+                            </div>
+                            <div class="col-auto col-2 mw-100 mb-2" style="direction: rtl; text-align: right">
+
+                                <strong>وذلك عن:</strong>
+                            </div>
+                        </div>
+
+                        <div class="row mb-2">
+                            <div class="col-auto col-4 mw-100 mb-2" style="border-right: 1px solid black;">
+                                <div class="mb-3" style="text-align: center;">
+                                    <strong style="margin-right: 20px">MANAGER</strong>
+                                    <strong>المدير</strong>
+                                </div>
+                                <div style="text-align:center;">
+                                    <hr style="width:90%; display:inline-block; border-style: dotted;"/>
+                                </div>
+                            </div>
+                            <div class="col-auto col-4 mw-100 mb-2" style="border-right: 1px solid black;">
+                                <div class="mb-3" style="text-align: center;">
+                                    <strong style="margin-right: 20px">ACCOUNTANT</strong>
+                                    <strong>المحاسب</strong>
+                                </div>
+                                <div style="text-align:center;">
+                                    <hr style="width:90%; display:inline-block; border-style: dotted;"/>
+                                </div>
+                            </div>
+                            <div class="col-auto col-4 mw-100 mb-2">
+                                <div class="mb-3" style="text-align: center;">
+                                    <strong style="margin-right: 20px">Received Sig</strong>
+                                    <strong>توقيع المستلم</strong>
+                                </div>
+                                <div style="text-align:center;">
+                                    <hr style="width:90%; display:inline-block; border-style: dotted;"/>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

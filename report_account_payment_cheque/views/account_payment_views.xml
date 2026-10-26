@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="amount_words_view_account_payment_form" model="ir.ui.view">
+        <field name="name">amount.words.view.account.payment.form</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//group[1]//group[@name='group1']" position="inside">
+                <field name="amount_in_words" invisible="1"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

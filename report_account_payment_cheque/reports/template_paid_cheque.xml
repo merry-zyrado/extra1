@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="custom_header">
+        <div class="header" dir="ltr">
+            <t t-set="company" t-value="o.company_id"/>
+            <div class="row">
+                <div class="col-5">
+                    <img t-att-src="'data:image/png;base64,' + (company.logo.decode('utf-8') if company.logo else '')"
+                         width="180px" height="140px"/>
+                </div>
+            </div>
+        </div>
+        <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+             dir="ltr">
+            <t t-out="0"/>
+        </div>
+
+    </template>
+
+    <template id="account_paid_cheque">
+        <t t-call="web.html_container">
+                     <style>
+                <!--@import url('https://fonts.googleapis.com/css2?family=Cairo&amp;display=swap');-->
+                @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&amp;display=swap');
+
+                font-family: 'Cairo', sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 700;
+                     </style>
+            <t t-foreach="docs" t-as="o">
+                <div class="page" dir="ltr">
+                    <t t-call="report_account_payment_cheque.custom_header">
+                                      <style>
+                <!--@import url('https://fonts.googleapis.com/css2?family=Cairo&amp;display=swap');-->
+                @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&amp;display=swap');
+
+                font-family: 'Cairo', sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 700;
+                     </style>
+                        <br/>
+                        <br/>
+                        <div class="row mb-2">
+<!--                            <div class="col-auto col-3 mw-100 mb-2">-->
+<!--                                <br/>-->
+<!--                                <div>-->
+<!--                                    <strong style="padding-right:12px;">No.</strong>-->
+<!--                                    <span style="color:red;" t-field="o.name"/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-auto col-1 mw-100 mb-2">-->
+<!--                                <br/>-->
+<!--                                <strong style="font-family: 'Cairo'">رقم</strong>-->
+<!--                            </div>-->
+                            <div class="col-auto col-5 mw-100 mb-2"/>
+                            <div class="col-auto col-3 mw-50 mb-3"
+                                 style="background-color: #008ee1; text-algin:center; direction:rtl">
+                                <t t-if="o.payment_type == 'inbound'">
+                                    <div style="font-weight:bold; color:white; padding-bottom:4px; text-align:center;font-family: 'Cairo'">
+                                        سـنـد
+                                        قـبـض
+                                    </div>
+                                    <div style="font-weight:bold; color:white; padding-bottom:6px; text-align:center;">
+                                        RECEIPT VOUCHER
+                                    </div>
+                                </t>
+                                <t t-else="">
+                                    <div style="font-weight:bold; color:white; padding-bottom:4px; text-align:center;font-family: 'Cairo'">
+                                        سـنـد
+                                        صرف
+                                    </div>
+                                    <div style="font-weight:bold; color:white; padding-bottom:6px; text-align:center;">
+                                        PAYMENT VOUCHER
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+<!--                            <div class="col-auto col-1 mw-100 mb-2">-->
+<!--                                <div>-->
+<!--                                    <strong style="padding-right:12px;">Date:</strong>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-auto col-2 mw-100 mb-2">-->
+<!--                                <div>-->
+<!--                                    <span t-field="o.date"/>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-auto col-1 mw-100 mb-2">-->
+<!--                                <div>-->
+<!--                                    :-->
+<!--                                    <strong style="padding-right:12px;font-family: 'Cairo'">التاريخ</strong>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="col-auto col-4 mw-100 mb-2"/>-->
+<!--                            <div class="col-auto col-2 mw-100 mb-2">-->
+<!--                                <div style="background-color: #D5DBDB;">-->
+<!--                                    <strong style="margin-right:5px">SR</strong>-->
+<!--                                    <span t-esc="int(o.amount)"/>-->
+<!--                                    <strong style="margin-left:5px;font-family: 'Cairo'">ريال</strong>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                            <div class="col-auto col-1 mw-100 mb-2"/>
+<!--                            <div class="col-auto col-1 mw-100 mb-2">-->
+<!--                                <div style="background-color: #D5DBDB;">-->
+<!--                                    <strong style="margin-right:5px">h</strong>-->
+<!--                                    <span t-esc="('%.2f' % o.amount).split('.')[1]"/>-->
+<!--                                    <strong style="margin-left:5px">هـ</strong>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </div>
+                        <t t-if="o.payment_type == 'outbound'">
+                                                        <div class="row mb-2">
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <div>
+                                        <strong>No:</strong>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-6 mw-100 mb-2">
+
+
+                                    <div style="text-align:center;color:red;" t-field="o.name"/>
+
+<!--                                    <span style="color:red;text-align:center;" t-field="o.name"/>-->
+
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-3">
+                                    <div style="text-align:right;">
+                                        :
+                                        <strong style="direction:rtl;font-family: 'Cairo'"> الرقم </strong>
+                                    </div>
+                                </div>
+
+                                 <div class="col-auto col-3 mw-100 mb-2">
+                                    <div>
+                                        <strong>Date:</strong>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-6 mw-100 mb-2">
+
+
+                                    <div style="text-align:center;" t-field="o.date"/>
+
+<!--                                    <span style="color:red;text-align:center;" t-field="o.name"/>-->
+
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-3">
+                                    <div style="text-align:right;">
+                                        :
+                                        <strong style="direction:rtl;font-family: 'Cairo'"> التاريخ </strong>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <div>
+                                        <strong>Pay to Mr./Messrs:</strong>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-6 mw-100 mb-2">
+                                    <div style="text-align:center;" t-field="o.partner_id"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-3">
+                                    <div style="text-align:right;">
+                                        :
+                                        <strong style="direction:rtl;font-family: 'Cairo'">يصرف إلى السيد/السادة</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="row mb-2">
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <div>
+                                        <strong>No:</strong>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-6 mw-100 mb-2">
+
+
+                                    <div style="text-align:center;color:red;" t-field="o.name"/>
+
+<!--                                    <span style="color:red;text-align:center;" t-field="o.name"/>-->
+
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-3">
+                                    <div style="text-align:right;">
+                                        :
+                                        <strong style="direction:rtl;font-family: 'Cairo'"> الرقم </strong>
+                                    </div>
+                                </div>
+
+                                 <div class="col-auto col-3 mw-100 mb-2">
+                                    <div>
+                                        <strong>Date:</strong>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-6 mw-100 mb-2">
+
+
+                                    <div style="text-align:center;" t-field="o.date"/>
+
+<!--                                    <span style="color:red;text-align:center;" t-field="o.name"/>-->
+
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-3">
+                                    <div style="text-align:right;">
+                                        :
+                                        <strong style="direction:rtl;font-family: 'Cairo'"> التاريخ </strong>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="row mb-2">
+                                <div class="col-auto col-3 mw-100 mb-2">
+                                    <div>
+                                        <strong>Received from Mr./Messrs:</strong>
+                                    </div>
+                                </div>
+                                <div class="col-auto col-6 mw-100 mb-2">
+                                    <div style="text-align:center;" t-field="o.partner_id"/>
+                                </div>
+                                <div class="col-auto col-3 mw-100 mb-3">
+                                    <div style="text-align:right;">
+                                        :
+                                        <strong style="direction:rtl;font-family: 'Cairo'">استلمنا من السيد/السادة</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+
+                        <div class="row mb-2">
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <div>
+                                    <strong>Amount of:</strong>
+                                </div>
+                            </div>
+                            <div class="col-auto col-6 mw-100 mb-2">
+                                <div style="text-align:center;font-family: 'Cairo'" t-field="o.amount"/>
+
+
+                            </div>
+                            <div class="col-auto col-3 mw-100 mb-3">
+                                <div style="text-align:right;font-family: 'Cairo'">
+                                    :
+                                    <strong style="direction:rtl;font-family: 'Cairo'">مبلغ </strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <div>
+                                    <strong>The Sum of:</strong>
+                                </div>
+                            </div>
+                            <div class="col-auto col-6 mw-100 mb-2">
+                                <div style="text-align:center;font-family: 'Cairo'" t-field="o.amount_in_words"/>
+                            </div>
+                            <div class="col-auto col-3 mw-100 mb-3">
+                                <div style="text-align:right;font-family: 'Cairo'">
+                                    :
+                                    <strong style="direction:rtl;font-family: 'Cairo'">مبلغ فقط وقدره</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-auto col-3 mw-100 mb-2">
+                                <div>
+                                    <strong>Being:</strong>
+                                </div>
+                            </div>
+                            <div class="col-auto col-6 mw-100 mb-2">
+                                <div style="text-align:center;font-family: 'Cairo'" t-field="o.ref"/>
+                            </div>
+                            <div class="col-auto col-3 mw-100 mb-3">
+                                <div style="text-align:right;font-family: 'Cairo'">
+                                    :
+                                    <strong style="direction:rtl;font-family: 'Cairo'">وذلك عن</strong>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <br/>
+                        <div class="row mb-2">
+
+                            <div class="col-auto col-4 mw-100 mb-2">
+                                <div class="mb-3" style="text-align: center;">
+                                    <strong style="margin-right: 20px;font-family: 'Cairo'">General Manager</strong>
+                                    <strong style="font-family: 'Cairo'">المدير العام</strong>
+                                </div>
+                                <div style="text-align:center;">
+                                    <hr style="width:90%; display:inline-block; border-style: dotted;font-family: 'Cairo'"/>
+                                </div>
+                            </div>
+
+                            <div class="col-auto col-4 mw-100 mb-2">
+                                <div class="mb-3" style="text-align: center;font-family: 'Cairo'">
+                                    <strong style="margin-right: 20px">Department Manager</strong>
+                                    <strong>مدير القسم</strong>
+                                </div>
+                                <div style="text-align:center;">
+                                    <hr style="width:90%; display:inline-block; border-style: dotted;"/>
+                                </div>
+                            </div>
+                            <div class="col-auto col-4 mw-100 mb-2">
+                                <div class="mb-3" style="text-align: center;font-family: 'Cairo'">
+                                    <strong style="margin-right: 20px;font-family: 'Cairo'">Accountant</strong>
+                                    <strong>المحاسب</strong>
+                                </div>
+                                <div style="text-align:center;">
+                                    <hr style="width:90%; display:inline-block; border-style: dotted;"/>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </t>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
