@@ -1,0 +1,75 @@
+body:not(.o_touch_device) .o_field_selection:not(:hover):not(:focus-within) select:not(:hover){
+
+background : #dee2e6 !important;
+}select {
+
+-webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
+}
+.o_form_view .o_horizontal_separator:not(:empty) {
+
+    font-size: 13px;
+    color: #ffffff;
+    position: relative;
+    background: #6c6b7e;
+    border-radius: 29px;
+    margin: 0px;
+    padding: 2px;
+    padding-left: 6px;
+
+}
+#o_employee_right {
+      border-left: unset !important;
+}.o_field_widget.o_required_modifier input {
+    border-bottom: 1px solid #d6145f;
+
+}
+.o_form_view:not(.o_field_highlight) .o_field_many2one_selection .o_external_button, .o_form_view:not(.o_field_highlight) .o_field_many2one_selection .o_dropdown_button, .o_form_view:not(.o_field_highlight) .o_field_many2one_selection .o_external_button, .o_form_view:not(.o_field_highlight) .o_field_many2one_selection .o_dropdown_button {
+    visibility: visible  !important;
+}
+
+$o-form-lightsecondary: lighten($o-brand-secondary, 25%) !default;
+$o-chatter-min-width: 530px !default;
+$o-form-sheet-min-width: 990px !default;
+$o-font-size-base-touch: 12px;
+
+.o_input {
+    border-width: 1px 1px 1px 1px;
+    background-color: #dee2e6;
+    background-image: none;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: #606266;
+    font-size: inherit;
+    outline: none;
+    padding: 0 10px;
+    width: 100%;
+
+    &:focus {
+        border-color: #66afe9;
+        outline: 0;
+    }
+
+    &:hover {
+        border-color: #c0c4cc;
+    }
+
+    input {
+        &.o_input {
+            height: 30px;
+        }
+    }
+}
+
+::-webkit-input-placeholder { /* Edge */
+  color: #495057a3;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #495057a3;
+}
+
+::placeholder {
+  color: #495057a3  !important;
+}
