@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_new_update_sale_order_new_update_sale_order,new_update_sale_order.new_update_sale_order,model_new_update_sale_order_new_update_sale_order,base.group_user,1,1,1,1

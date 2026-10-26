@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+     <t t-name="mnk_theme.web_client" owl="1">
+        <t t-if="!state.fullscreen">
+            <NavBar/>
+            <AppBar/>
+        </t>
+        <ActionContainer/>
+        <MainComponentsContainer/>
+    </t>
+
+</templates>

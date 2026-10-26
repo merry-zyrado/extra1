@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+    <!-- menu apps -->
+    <t t-name="mnk_theme.app_item" owl="1">
+        <a class="app_item d-flex align-items-center"
+            t-att-class="{'active': state.active}"
+            t-on-click.prevent="click_app_item"
+            t-att-href="getMenuItemHref()">
+            <img class="o-app-icon " t-attf-src="{{app.webIconData}}"/>
+            <span class="app_name" t-esc="app.name"/>
+        </a>
+    </t>
+</templates>

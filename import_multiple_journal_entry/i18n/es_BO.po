@@ -1,0 +1,196 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* import_multiple_journal_entry
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-12 06:38+0000\n"
+"PO-Revision-Date: 2023-04-12 12:17+0530\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es_BO\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: import_multiple_journal_entry
+#. odoo-python
+#: code:addons/import_multiple_journal_entry/wizard/account_move.py:0
+#, python-format
+msgid "\"%s\" Currency is not  in the system"
+msgstr "\"%s\" La moneda no está en el sistema"
+
+#. module: import_multiple_journal_entry
+#. odoo-python
+#: code:addons/import_multiple_journal_entry/wizard/account_move.py:0
+#, python-format
+msgid "\"%s\" Wrong Account Code"
+msgstr "Código de cuenta incorrecto \"%s\""
+
+#. module: import_multiple_journal_entry
+#. odoo-python
+#: code:addons/import_multiple_journal_entry/wizard/account_move.py:0
+#, python-format
+msgid "\"%s\" Wrong Analytic Account"
+msgstr "Cuenta analítica incorrecta \"%s\""
+
+#. module: import_multiple_journal_entry
+#: model_terms:ir.ui.view,arch_db:import_multiple_journal_entry.import_account_move_line_view
+msgid ""
+"<i class=\"fa fa-download\"/>\n"
+"                                CSV file"
+msgstr ""
+"<i class=\"fa fa-download\"/>\n"
+"                                archivo CSV"
+
+#. module: import_multiple_journal_entry
+#: model_terms:ir.ui.view,arch_db:import_multiple_journal_entry.import_account_move_line_view
+msgid ""
+"<i class=\"fa fa-download\"/>\n"
+"                                Excel file"
+msgstr ""
+"<i class=\"fa fa-download\"/>\n"
+"                                archivo Excel"
+
+#. module: import_multiple_journal_entry
+#: model_terms:ir.ui.view,arch_db:import_multiple_journal_entry.import_account_move_line_view
+msgid "<strong>Download Sample:</strong>"
+msgstr "<strong>Descargar muestra:</strong>"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields.selection,name:import_multiple_journal_entry.selection__gen_journal_entry__import_option__csv
+msgid "CSV File"
+msgstr "Archivo CSV"
+
+#. module: import_multiple_journal_entry
+#: model_terms:ir.ui.view,arch_db:import_multiple_journal_entry.import_account_move_line_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields,field_description:import_multiple_journal_entry.field_gen_journal_entry__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields,field_description:import_multiple_journal_entry.field_gen_journal_entry__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields,field_description:import_multiple_journal_entry.field_gen_journal_entry__create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: import_multiple_journal_entry
+#. odoo-python
+#: code:addons/import_multiple_journal_entry/wizard/account_move.py:0
+#, python-format
+msgid "Define Date or Amount In Corresponding Columns !!!"
+msgstr "¡Defina la fecha o la cantidad en las columnas correspondientes!"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields,field_description:import_multiple_journal_entry.field_gen_journal_entry__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields,field_description:import_multiple_journal_entry.field_gen_journal_entry__file_to_upload
+msgid "File"
+msgstr "Archivo"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields,field_description:import_multiple_journal_entry.field_gen_journal_entry__id
+msgid "ID"
+msgstr "IDENTIFICACIÓN"
+
+#. module: import_multiple_journal_entry
+#: model_terms:ir.ui.view,arch_db:import_multiple_journal_entry.import_account_move_line_view
+msgid "Import"
+msgstr "Importar"
+
+#. module: import_multiple_journal_entry
+#: model:ir.actions.act_window,name:import_multiple_journal_entry.action_import_account_move_line
+#: model:ir.ui.menu,name:import_multiple_journal_entry.bi_gen_journal_wizard_import
+msgid "Import Journal Entries"
+msgstr "Importar entradas de diario"
+
+#. module: import_multiple_journal_entry
+#: model_terms:ir.ui.view,arch_db:import_multiple_journal_entry.import_account_move_line_view
+msgid "Import Journal Items"
+msgstr "Importar elementos del diario"
+
+#. module: import_multiple_journal_entry
+#. odoo-python
+#: code:addons/import_multiple_journal_entry/wizard/account_move.py:0
+#, python-format
+msgid "Invalid File!!"
+msgstr "¡¡Archivo inválido!!"
+
+#. module: import_multiple_journal_entry
+#. odoo-python
+#: code:addons/import_multiple_journal_entry/wizard/account_move.py:0
+#, python-format
+msgid "Invalid file!"
+msgstr "¡Archivo inválido!"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields,field_description:import_multiple_journal_entry.field_gen_journal_entry____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields,field_description:import_multiple_journal_entry.field_gen_journal_entry__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields,field_description:import_multiple_journal_entry.field_gen_journal_entry__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: import_multiple_journal_entry
+#. odoo-python
+#: code:addons/import_multiple_journal_entry/wizard/account_move.py:0
+#, python-format
+msgid "Please Define Journal In Corresponding Columns !!!."
+msgstr "¡Por favor, defina Diario en las columnas correspondientes!"
+
+#. module: import_multiple_journal_entry
+#. odoo-python
+#: code:addons/import_multiple_journal_entry/wizard/account_move.py:0
+#, python-format
+msgid "Please Define Journal which are already in system."
+msgstr "Defina el diario que ya está en el sistema."
+
+#. module: import_multiple_journal_entry
+#. odoo-python
+#: code:addons/import_multiple_journal_entry/wizard/account_move.py:0
+#, python-format
+msgid "Please add Date field in sheet."
+msgstr "Agregue el campo Fecha en la hoja."
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields,field_description:import_multiple_journal_entry.field_gen_journal_entry__import_option
+msgid "Select"
+msgstr "Seleccionar"
+
+#. module: import_multiple_journal_entry
+#. odoo-python
+#: code:addons/import_multiple_journal_entry/wizard/account_move.py:0
+#, python-format
+msgid "Wrong Date Format. Date Should be in format YYYY-MM-DD."
+msgstr "Formato de fecha incorrecto. Fecha Debe estar en formato AAAA-MM-DD."
+
+#. module: import_multiple_journal_entry
+#: model:ir.model.fields.selection,name:import_multiple_journal_entry.selection__gen_journal_entry__import_option__xls
+msgid "XLS File"
+msgstr "Archivo XLS"
+
+#. module: import_multiple_journal_entry
+#: model:ir.model,name:import_multiple_journal_entry.model_gen_journal_entry
+msgid "gen.journal.entry"
+msgstr "gen.journal.entry"
