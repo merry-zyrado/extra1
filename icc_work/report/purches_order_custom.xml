@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+
+    <template id="purchase_order_custom">
+        <t t-call="web.basic_layout">
+            <style>
+
+                <![CDATA[
+                @font-face {
+                    font-family: 'Arial';
+                    src: url('/icc_work/static/src/fonts/arial.ttf')
+                    format('truetype');
+                        }
+                 tr,td {
+                    font-family: 'Arial';
+                        }
+
+
+                    @font-face {
+                    font-family: 'ArialBold';
+
+                    src: url('/icc_work/static/src/fonts/rialbd.ttf')
+                    format('truetype');
+                        }
+                 tr,td {
+                    font-family: 'ArialBold';
+                        }
+.brmedium {
+            display: block;
+            margin-bottom: 1em;
+        }
+          .br {
+            display: block;
+            margin-bottom: 0em;
+        }
+          .brlarge {
+            display: block;
+            margin-bottom: 2em;
+        }
+                    ]]>
+
+                table, th, td {
+                <!--                    @import url('https://fonts.googleapis.com/css2?family=Cairo&amp;display=swap');-->
+                <!--                    font-family: 'Cairo', sans-serif;-->
+                font-size: 14px;
+                border: 0px solid;
+                width:100%
+                font-size:15px
+                }
+
+                .row {
+                font-size: 14px;
+                margin-left:-5px;
+                margin-right:-5px;
+                }
+
+                .column {
+                flex: 50%;
+                padding: 5px;
+                font-size: 14px;
+                }
+
+                table {
+                font-size: 14px;
+
+                width: 100%;
+                }
+
+                th, td {
+                <!--                    text-align: left;-->
+                <!--                    padding: 16px;-->
+                border: 1px solid #ddd;
+                div.blueTable {
+                font-family: Tahoma, Geneva, sans-serif;
+                border: 1px solid #1C6EA4;
+                background-color: #EEEEEE;
+                width: 100%;
+                text-align: center;
+                border-collapse: collapse;
+                font-size: 14px;
+                }
+                .divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
+                padding: 3px 2px;
+                }
+                .divTable.blueTable .divTableBody .divTableCell {
+                font-size: 13px;
+                }
+                .divTable.blueTable .divTableRow:nth-child(even) {
+                background: #D0E4F5;
+                }
+                .blueTable .tableFootStyle {
+                font-size: 19px;
+                font-weight: bold;
+                color: #FFFFFF;
+                background: #D0E4F5;
+                background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+                background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+                background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+                border-top: 2px solid #444444;
+                }
+                .blueTable .tableFootStyle {
+                font-size: 19px;
+                }
+                .blueTable .tableFootStyle .links {
+                text-align: right;
+                }
+                .blueTable .tableFootStyle .links a{
+                display: inline-block;
+                background: #1C6EA4;
+                color: #FFFFFF;
+                padding: 2px 8px;
+                border-radius: 5px;
+                }
+                .blueTable.outerTableFooter {
+                border-top: none;
+                }
+                .blueTable.outerTableFooter .tableFootStyle {
+                padding: 3px 5px;
+                }
+                /* DivTable.com */
+                .divTable{ display: table; }
+                .divTableRow { display: table-row; }
+                .divTableHeading { display: table-header-group;}
+                .divTableCell, .divTableHead { display: table-cell;}
+                .divTableHeading { display: table-header-group;}
+                .divTableFoot { display: table-footer-group;}
+                .divTableBody { display: table-row-group;}
+
+                }
+                table.blueTable {
+                <!--                    @import url('https://fonts.googleapis.com/css2?family=Cairo&amp;display=swap');-->
+                <!--                    font-family: 'Cairo', sans-serif;-->
+                vertical-align: middle;
+                font-size: 14px;
+                width: 100%;
+                text-align: left;
+                border-collapse: collapse;
+                text-align: right;
+
+                }
+                table.blueTable td, table.blueTable th {
+                padding: 3px 2px;
+                vertical-align: middle;
+                border-collapse: collapse;
+
+                }
+                table.blueTable tbody td {
+                font-size: 14px;
+                vertical-align: middle;
+                width: 900px
+
+
+                }
+                table.blueTable tfoot td {
+                font-size: 14px;
+                }
+                table.blueTable tfoot .links {
+                text-align: center;
+                vertical-align: middle;
+                }
+                table.blueTable tfoot .links a{
+                display: inline-block;
+                background: #1C6EA4;
+                color: #FFFFFF;
+                <!--                        padding: 2px 8px;-->
+                border-radius: 5px;
+                vertical-align: middle;
+                }
+            </style>
+
+
+
+            <t t-foreach="docs" t-as="doc">
+                <br></br>
+                <br></br>
+                <br></br>
+
+                <table style="text-align:center;font-family: 'Arial', ;  font-size:25px;border: 0px solid;border-color: #FFFFFF;">
+                    <td style="text-align:center;font-size:25px;border: 0px solid;border-color: #FFFFFF;">
+                        PURCHASE ORDER
+
+
+                    </td>
+                </table>
+                <br></br>
+                <br></br>
+                <br></br>
+
+                <div class="row">
+                    <div class="column" style="width: 50%;border: 0px solid;border-color: #FFFFFF;">
+                        <table>
+
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;">
+                                <td style="width: 12% ;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;border: 0px solid;border-color: #FFFFFF;" align="left"  class="table-active">PO Date:</td>
+                                <td style="width: 26%;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;border: 0px solid;border-color: #FFFFFF;" align="left" >
+
+
+                                    <span t-field="doc.date_order"/>
+
+
+                                </td>
+                                <!--                                <td style="width: 12%;vertical-align: middle  ;height:35px" align="right" class="table-active">اسم المشروع</td>-->
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;">
+                                <td style="width: 17%;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;"   align="left" class="table-active">Vendor Ref:</td>
+                                <td style="width: 20%;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;" align="left" >
+                                    <span t-field="doc.partner_ref"/>
+
+
+                                </td>
+                            </tr>
+
+
+
+                        </table>
+                    </div>
+
+                    <div class="column" style="width: 50%;border: 0px solid;border-color: #FFFFFF;">
+                        <table>
+
+                            <!--                            <tr style="text-align: center;">-->
+                            <!--                                <td style="width: 12% ;vertical-align: middle  ;height:25px;background-color: #E8E8E8;" align="center"  class="table-active" colspan="3"> بيانات المشروع </td>-->
+
+                            <!--                            </tr>-->
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;">
+                                <td style="width: 12% ;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;" align="left"  class="table-active">PO Number:</td>
+                                <td style="width: 26%;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;" align="left" >
+
+                                    <span t-field="doc.name"/>
+
+                                    <!--                                    <span t-field="doc.project_id.name"/>-->
+
+
+                                </td>
+                                <!--                                <td style="width: 12%;vertical-align: middle  ;height:35px" align="right" class="table-active">اسم المشروع</td>-->
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;">
+                                <td style="width: 17%;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;"   align="left" class="table-active">Currency:</td>
+                                <td style="width: 20%;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;" align="left" >
+                                    <span t-field="doc.currency_id"/>
+
+                                </td>
+                                <!--                                <td style="width: 13%;vertical-align: middle  ;height:35px" align="right" class="table-active">رقم المناقصة</td>-->
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;">
+                                <td style="width: 17%;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;"  align="left" class="table-active">Page: </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;" align="left" >
+
+
+                                    <!--                                <span t-field="doc.partner_id.customer_balance"/>-->
+
+                                </td>
+                                <!--                                <td style="width: 13%;vertical-align: middle  ;height:35px" align="right" class="table-active">رقم التعميد </td>-->
+                            </tr>
+
+
+
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column" style="width: 33%;border: 0px solid;border-color: #FFFFFF;">
+                        <table>
+
+                            <tr style="text-align: center;">
+                                <td style="width: 12% ;vertical-align: middle  ;height:25px;background-color: #E8E8E8;" align="center"  class="table-active" colspan="3"> VENDOR </td>
+
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;">
+                                <td style="width: 12% ;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;border: 0px solid;border-color: #FFFFFF;line-height: 2;" align="left"  class="table-active">
+                                    <div t-field="doc.partner_id.name"></div>
+                                    <div t-field="doc.partner_id.street"></div>
+                                    <div t-field="doc.partner_id.phone"></div>
+                                    <div t-field="doc.partner_id.mobile"></div>
+
+
+
+                                    <!--                                    <div t-field="doc.partner_id" t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;, &quot;phone&quot;, &quot;vat&quot;], &quot;no_marker&quot;: True, &quot;phone_icons&quot;: True}"/>-->
+
+
+                                </td>
+
+                                <!--                                <td style="width: 12%;vertical-align: middle  ;height:35px" align="right" class="table-active">اسم المشروع</td>-->
+                            </tr>
+
+
+
+
+                        </table>
+                    </div>
+
+                    <div class="column" style="width: 33%;border: 0px solid;border-color: #FFFFFF;">
+                        <table>
+
+                            <tr style="text-align: center;">
+                                <td style="width: 12% ;vertical-align: middle  ;height:25px;background-color: #E8E8E8;" align="center"  class="table-active" colspan="3"> CONSIGNEE </td>
+
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;">
+                                <td style="width: 12% ;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;line-height: 2;" align="left"  class="table-active">
+                                    <div t-field="doc.consignee_id.name"></div>
+                                    <div t-field="doc.consignee_id.street"></div>
+                                    <div t-field="doc.consignee_id.phone"></div>
+                                    <div t-field="doc.consignee_id.mobile"></div>
+
+
+                                </td>
+
+                                <!--                                <td style="width: 12%;vertical-align: middle  ;height:35px" align="right" class="table-active">اسم المشروع</td>-->
+                            </tr>
+
+
+                        </table>
+
+                    </div>
+                    <div class="column" style="width: 33%;border: 0px solid;border-color: #FFFFFF;">
+                        <table>
+
+                            <tr style="text-align: center;">
+                                <td style="width: 12% ;vertical-align: middle  ;height:25px;background-color: #E8E8E8;" align="center"  class="table-active" colspan="3"> INVOICE TO </td>
+
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;">
+                                <td style="width: 12% ;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;line-height: 2;" align="left"  class="table-active">
+                                    <div t-field="doc.invoice_to_id.name"></div>
+                                    <div t-field="doc.invoice_to_id.street"></div>
+                                    <div t-field="doc.invoice_to_id.phone"></div>
+                                    <div t-field="doc.invoice_to_id.mobile"></div>
+
+                                </td>
+
+                                <!--                                <td style="width: 12%;vertical-align: middle  ;height:35px" align="right" class="table-active">اسم المشروع</td>-->
+                            </tr>
+
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <br></br>
+                <table style="width:100%">
+                    <thead>
+                        <tr>
+                            <th style="height:30px;text-align: left;vertical-align: middle;border: 0px solid;text-decoration: underline; ">Payment Terms:</th>
+                            <th  style="height:30px;text-align: left;vertical-align: middle;border: 0px solid; text-decoration: underline;">Shipping Terms:</th>
+                            <th  style="height:30px;text-align: left;vertical-align: middle;border: 0px solid; text-decoration: underline;">Delivery Date:</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="width:33.33;border: 0px solid;text-align: justify;font-family: 'Arial', ;  font-size:16px; line-height: 2;">
+
+                                <div t-field="doc.payment_terms"></div>
+                            </td>
+                            <td style="width:33.33;border: 0px solid;text-align: justify;font-family: 'Arial', ;  font-size:16px; line-height: 2;">
+
+                                <div t-field="doc.shipping_terms"></div>
+
+                            </td>
+                            <td style="width:33.33;border: 0px solid;text-align: justify;font-family: 'Arial', ;  font-size:16px; line-height: 2;">
+
+                                <div t-field="doc.delivery_date"></div>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <br></br>
+                <br></br>
+                <table>
+                    <thead>
+                        <tr  style="text-align: center;height:30px">
+                            <th style="width: 7%;vertical-align: middle  ;height:30px;background-color: #E8E8E8;" align="left" class="table-active">#</th>
+                            <th style="vertical-align: middle  ;height:30px;width:35%;background-color: #E8E8E8;" align="center" class="table-active">DESCRIPTION </th>
+                            <th style="vertical-align: middle  ;height:30px;background-color: #E8E8E8;" align="center" class="table-active">UNIT PRICE</th>
+                            <th style="vertical-align: middle  ;height:30px;background-color: #E8E8E8;" align="center" class="table-active">TOTAL PRICE</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="counter" t-value="0"/>
+                        <t t-foreach="doc.order_line" t-as="line">
+                            <t  t-set="counter" t-value="counter + 1"/>
+
+                            <tr style="text-align: center;">
+                                <td style="vertical-align: middle  ;height:30px" align="center"><span t-esc="counter"/></td>
+                                <td style="vertical-align: middle  ;height:30px" align="center"> <span t-field="line.name"/></td>
+                                <td style="vertical-align: middle  ;width:20%;height:30px" align="center"> <span t-field="line.price_unit"/></td>
+                                <td style="vertical-align: middle  ;height:30px" align="center">
+                                    <span t-field="line.price_subtotal"/>
+
+
+
+                                </td>
+
+                            </tr>
+
+                        </t>
+
+                        <tr style="text-align: center;">
+                            <td style="vertical-align: middle  ;height:30px;background-color: #E8E8E8;" align="center" colspan="2">
+                                Comments or Special Instructions
+                            </td>
+
+                            <td style="vertical-align: middle  ;width:20%;height:30px" align="center">
+                                SUBTOTAL
+                            </td>
+                            <td style="vertical-align: middle  ;height:30px" align="center">
+                                <span t-field="doc.amount_untaxed"/>
+
+
+
+
+
+
+                            </td>
+
+                        </tr>
+
+                        <tr style="text-align: center;height:30px">
+                            <td style="vertical-align: middle  ;text-align: justify;font-family: 'Arial', ;  font-size:16px; line-height: 1.15; " align="center" colspan="2" rowspan="3">
+                                <span t-field="doc.comments"/>
+
+                            </td>
+
+                            <td style="vertical-align: middle  ;width:20%;height:30px" align="center">
+                                TAX
+                            </td>
+                            <td style="vertical-align: middle  ;height:30px" align="center">
+                                <span t-field="doc.amount_tax"/>
+
+
+
+
+
+
+                            </td>
+
+                        </tr>
+
+                        <tr style="text-align: center;height:30px">
+
+                            <td style="vertical-align: middle  ;width:20%;height:30px" align="center">
+                                SHIPPING
+                            </td>
+                            <td style="vertical-align: middle  ;height:30px" align="center">
+
+
+
+
+
+
+                            </td>
+
+                        </tr>
+
+                        <tr style="text-align: center;height:30px">
+
+                            <td style="vertical-align: middle  ;width:20%;height:30px" align="center">
+                                TOTAL
+                            </td>
+                            <td style="vertical-align: middle  ;height:30px" align="center">
+                                <span t-field="doc.amount_total"/>
+
+
+
+
+
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+
+
+
+                <br></br>
+                <br>
+
+                    <p>
+                        <span style="font-weight: bold;text-align:left;font-size:20px;text-decoration: underline;">
+
+                            Approved By:
+                        </span>
+                        <br></br>
+
+
+                    </p>
+                </br>
+
+
+            </t>
+        </t>
+
+
+    </template>
+
+
+    <record id="paperformat_quotation" model="report.paperformat">
+        <field name="name">Leave quotation</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">35</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">37</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report
+            id="print_new_purchase_order_custom"
+            model="purchase.order"
+            string="Purchase Order Custom "
+            report_type="qweb-pdf"
+            name="icc_work.purchase_order_custom"
+            file="icc_work.purchase_order_custom"
+            paperformat="icc_work.paperformat_quotation"
+    />
+
+</odoo>

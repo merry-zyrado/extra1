@@ -1,0 +1,45 @@
+<odoo>
+    <data>
+        <record id="view_hr_payslip_run_custom" model="ir.ui.view">
+            <field name="name">view.hr.payslip.run.custom</field>
+            <field name="model">hr.payslip.run</field>
+            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>
+            <field name="arch" type="xml">
+
+                                    <xpath expr="//group/group" position="after">
+
+                           <group>
+                        <field name="credit_id" options="{'no_quick_create': True}"/>
+                        <field name="debit_id" options="{'no_quick_create': True}"/>
+                        <field name="total_amount" readonly="1"/>
+                        <field name="journal_id" />
+                        <field name="account_id" readonly="1"/>
+                    </group>
+
+                                    </xpath>
+
+                                <xpath expr="//header/button[@name='action_draft']" position="after">
+         <button name="get_hr_payslip" type="object" string="Create Journal"
+                         class="oe_highlight"  attrs="{'invisible': [('state', '!=', 'paid')]}" />
+                                </xpath>
+
+                </field>
+        </record>
+
+<!--        <record id="view_hr_payslip_run_custom_new" model="ir.ui.view">-->
+<!--            <field name="name">view.hr.payslip.run.custom_new</field>-->
+<!--            <field name="model">hr.payslip.run</field>-->
+<!--            <field name="inherit_id" ref="hr_payroll.hr_payslip_run_form"/>-->
+<!--            <field name="arch" type="xml">-->
+
+
+
+<!--                                <xpath expr="//sheet/div/button[@name='action_draft']" position="after">-->
+<!--         <button name="get_hr_payslip" type="object" string="Create Journal"-->
+<!--                         class="oe_highlight"/>-->
+<!--                                </xpath>-->
+
+<!--                </field>-->
+<!--        </record>-->
+    </data>
+</odoo>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+
+    <template id="sale_receipt_voucher">
+        <t t-call="web.basic_layout">
+            <style>
+
+                <![CDATA[
+                @font-face {
+                    font-family: 'Arial';
+                    src: url('/icc_work/static/src/fonts/arial.ttf')
+                    format('truetype');
+                        }
+                 tr,td {
+                    font-family: 'Arial';
+                        }
+
+
+                    @font-face {
+                    font-family: 'ArialBold';
+
+                    src: url('/icc_work/static/src/fonts/rialbd.ttf')
+                    format('truetype');
+                        }
+                 tr,td {
+                    font-family: 'ArialBold';
+                        }
+.brmedium {
+            display: block;
+            margin-bottom: 1em;
+        }
+          .br {
+            display: block;
+            margin-bottom: 0em;
+        }
+          .brlarge {
+            display: block;
+            margin-bottom: 2em;
+        }
+                    ]]>
+
+                table, th, td {
+                <!--                    @import url('https://fonts.googleapis.com/css2?family=Cairo&amp;display=swap');-->
+                <!--                    font-family: 'Cairo', sans-serif;-->
+                font-size: 14px;
+                border: 0px solid;
+                width:100%
+                font-size:15px
+                }
+
+                .row {
+                font-size: 14px;
+                margin-left:-5px;
+                margin-right:-5px;
+                }
+
+                .column {
+                flex: 50%;
+                padding: 5px;
+                font-size: 14px;
+                }
+
+                table {
+                font-size: 14px;
+
+                width: 100%;
+                }
+
+                th, td {
+                <!--                    text-align: left;-->
+                <!--                    padding: 16px;-->
+                border: 1px solid #ddd;
+                div.blueTable {
+                font-family: Tahoma, Geneva, sans-serif;
+                border: 1px solid #1C6EA4;
+                background-color: #EEEEEE;
+                width: 100%;
+                text-align: center;
+                border-collapse: collapse;
+                font-size: 14px;
+                }
+                .divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
+                padding: 3px 2px;
+                }
+                .divTable.blueTable .divTableBody .divTableCell {
+                font-size: 13px;
+                }
+                .divTable.blueTable .divTableRow:nth-child(even) {
+                background: #D0E4F5;
+                }
+                .blueTable .tableFootStyle {
+                font-size: 19px;
+                font-weight: bold;
+                color: #FFFFFF;
+                background: #D0E4F5;
+                background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+                background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+                background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+                border-top: 2px solid #444444;
+                }
+                .blueTable .tableFootStyle {
+                font-size: 19px;
+                }
+                .blueTable .tableFootStyle .links {
+                text-align: right;
+                }
+                .blueTable .tableFootStyle .links a{
+                display: inline-block;
+                background: #1C6EA4;
+                color: #FFFFFF;
+                padding: 2px 8px;
+                border-radius: 5px;
+                }
+                .blueTable.outerTableFooter {
+                border-top: none;
+                }
+                .blueTable.outerTableFooter .tableFootStyle {
+                padding: 3px 5px;
+                }
+                /* DivTable.com */
+                .divTable{ display: table; }
+                .divTableRow { display: table-row; }
+                .divTableHeading { display: table-header-group;}
+                .divTableCell, .divTableHead { display: table-cell;}
+                .divTableHeading { display: table-header-group;}
+                .divTableFoot { display: table-footer-group;}
+                .divTableBody { display: table-row-group;}
+
+                }
+                table.blueTable {
+                <!--                    @import url('https://fonts.googleapis.com/css2?family=Cairo&amp;display=swap');-->
+                <!--                    font-family: 'Cairo', sans-serif;-->
+                vertical-align: middle;
+                font-size: 14px;
+                width: 100%;
+                text-align: left;
+                border-collapse: collapse;
+                text-align: right;
+
+                }
+                table.blueTable td, table.blueTable th {
+                padding: 3px 2px;
+                vertical-align: middle;
+                border-collapse: collapse;
+
+                }
+                table.blueTable tbody td {
+                font-size: 14px;
+                vertical-align: middle;
+                width: 900px
+
+
+                }
+                table.blueTable tfoot td {
+                font-size: 14px;
+                }
+                table.blueTable tfoot .links {
+                text-align: center;
+                vertical-align: middle;
+                }
+                table.blueTable tfoot .links a{
+                display: inline-block;
+                background: #1C6EA4;
+                color: #FFFFFF;
+                <!--                        padding: 2px 8px;-->
+                border-radius: 5px;
+                vertical-align: middle;
+                }
+            </style>
+
+
+
+            <t t-foreach="docs" t-as="doc">
+                <br></br>
+                <br></br>
+                <br></br>
+
+                <table style="text-align:center;font-family: 'Arial', ;  font-size:25px;border: 0px solid;border-color: #FFFFFF;">
+                    <td style="text-align:center;font-size:25px;border: 0px solid;border-color: #FFFFFF;">
+                        <div>سند قبض مالي</div>
+                        <div>Receipt Voucher</div>
+
+
+                    </td>
+                </table>
+                <br></br>
+                <br></br>
+                <br></br>
+
+                <table style="width:100%;text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;">
+                    <tbody>
+                        <tr>
+                            <td style="width:33%;text-align: left;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">NO</td>
+                            <td style="width:33%;text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px"><span t-field="doc.number_of_de"/></td>
+                            <td style="width:33%;text-align: right;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">رقم السند</td>
+                        </tr>
+
+                        <tr>
+                            <td style="width:33%;text-align: left;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">Date</td>
+                            <td style="width:33%;text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px"><span t-field="doc.voucher_date"/></td>
+                            <td style="width:33%;text-align: right;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">التاريخ</td>
+                        </tr>
+
+                        <tr>
+                            <td style="width:33%;text-align: left;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">Received from Mr / MS</td>
+                            <td style="width:33%;text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px"><span t-field="doc.recived_partner_id.name"/></td>
+                            <td style="width:33%;text-align: right;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">استلمت من السيد / السيدة </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width:33%;text-align: left;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">The sum of</td>
+                            <td style="width:33%;text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px"><span t-field="doc.sum_amount"/></td>
+                            <td style="width:33%;text-align: right;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">مبلغ وقدره </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width:33%;text-align: left;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">Cash / Cheque No</td>
+                            <td style="width:33%;text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px"><span t-field="doc.check_number"/></td>
+                            <td style="width:33%;text-align: right;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">نقدًا / شيك رقم </td>
+                        </tr>
+
+                        <tr>
+                            <td style="width:33%;text-align: left;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">For</td>
+                            <td style="width:33%;text-align: center;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px"><span t-field="doc.the_for"/></td>
+                            <td style="width:33%;text-align: right;vertical-align: middle  ;height:35px;border: 0px solid;border-color: #FFFFFF;font-size:16px">وذلك عن </td>
+                        </tr>
+                    </tbody>
+                </table>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+                <table  style="width:100%;text-align: center;vertical-align: middle  ;height:35px;" >
+                    <tbody>
+                        <tr>
+                            <td style="height:35px;vertical-align: middle ">توقيع المدير</td>
+                            <td style="height:35px;vertical-align: middle "> المستلم</td>
+                            <td style="height:35px;vertical-align: middle ">أعدها</td>
+
+                        </tr>
+                        <tr>
+                            <td style="height:35px;vertical-align: middle ">Manager sign</td>
+                            <td style="height:35px;vertical-align: middle "> Received by</td>
+                            <td style="height:35px;vertical-align: middle ">Prepared By</td>
+
+                        </tr>
+
+                        <tr>
+                            <td style="height:35px"> </td>
+                            <td style="height:35px">  </td>
+                            <td style="height:35px"> </td>
+
+                        </tr>
+                    </tbody>
+                </table>
+
+
+            </t>
+        </t>
+
+
+    </template>
+
+
+    <record id="paperformat_quotation" model="report.paperformat">
+        <field name="name">Leave quotation</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">35</field>
+        <field name="margin_bottom">35</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">37</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report
+            id="print_new_receipt_voucher"
+            model="sale.order"
+            string="Receipt Voucher"
+            report_type="qweb-pdf"
+            name="icc_work.sale_receipt_voucher"
+            file="icc_work.sale_receipt_voucher"
+            paperformat="icc_work.paperformat_quotation"
+    />
+
+</odoo>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="delivery_form" model="ir.ui.view">
+        <field name="name">delivery_form</field>
+        <field name="model">receipt.report</field>
+        <field name="arch" type="xml">
+            <form string="Visa Form">
+                <sheet>
+
+                    <group string="" col="4">
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="date_recipt"/>
+                        <field name="active"/>
+                        <field name="account"/>
+                        <field name="sale_id"/>
+
+
+
+                    </group>
+
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="delivery_tree" model="ir.ui.view">
+        <field name="name">delivery_tree</field>
+        <field name="model">receipt.report</field>
+        <field name="arch" type="xml">
+            <tree string="Delivery Tree">
+               <field name="name"/>
+                        <field name="code"/>
+                        <field name="date_recipt"/>
+                        <field name="active"/>
+                        <field name="account"/>
+                        <field name="sale_id"/>
+
+
+            </tree>
+        </field>
+    </record>
+    <record id="delivery_search" model="ir.ui.view">
+        <field name="name">delivery_search</field>
+        <field name="model">receipt.report</field>
+        <field name="arch" type="xml">
+            <search string="Delivery Search">
+               <field name="code"/>
+                        <field name="date_recipt"/>
+                        <field name="active"/>
+                        <field name="account"/>
+                        <field name="sale_id"/>
+            </search>
+        </field>
+    </record>
+
+
+
+
+
+
+
+    <record id="delivery_action" model="ir.actions.act_window">
+        <field name="name">Delivery</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">receipt.report</field>
+        <field name="view_mode">tree,form</field>
+        <!--        <field name="view_id" ref="dress_customization.dress_tree"/>-->
+        <!--        <field name="context">{'search_default_internal_loc': 1, 'search_default_productgroup':1, 'search_default_locationgroup':1}</field>-->
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_empty_folder">
+                لا يوجد بيانات
+            </p>
+            <p>
+                اضافة جديد ......
+            </p>
+        </field>
+    </record>
+
+
+
+    <menuitem id="menu_flying"   action="delivery_action" name="Delivery Note" />
+
+</odoo>

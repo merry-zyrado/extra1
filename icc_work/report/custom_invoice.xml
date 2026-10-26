@@ -1,0 +1,882 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+
+
+    <template id="invoice_part">
+        <t t-call="web.basic_layout">
+            <style>
+
+                <![CDATA[
+                @font-face {
+                    font-family: 'Arial';
+                    src: url('/icc_work/static/src/fonts/arial.ttf')
+                    format('truetype');
+                        }
+                 tr,td {
+                    font-family: 'Arial';
+                        }
+
+
+                    @font-face {
+                    font-family: 'ArialBold';
+
+                    src: url('/icc_work/static/src/fonts/rialbd.ttf')
+                    format('truetype');
+                        }
+                 tr,td {
+                    font-family: 'ArialBold';
+                        }
+.brmedium {
+            display: block;
+            margin-bottom: 1em;
+        }
+          .br {
+            display: block;
+            margin-bottom: 0em;
+        }
+          .brlarge {
+            display: block;
+            margin-bottom: 2em;
+        }
+                    ]]>
+
+                table, th, td {
+                <!--                    @import url('https://fonts.googleapis.com/css2?family=Cairo&amp;display=swap');-->
+                <!--                    font-family: 'Cairo', sans-serif;-->
+                font-size: 14px;
+                border: 1px solid;
+                width:100%
+                font-size:15px
+                }
+
+                .row {
+                font-size: 14px;
+                margin-left:-5px;
+                margin-right:-5px;
+                }
+
+                .column {
+                flex: 50%;
+                padding: 5px;
+                font-size: 14px;
+                }
+
+                table {
+                font-size: 14px;
+
+                width: 100%;
+                border: 1px solid #ddd;
+                }
+
+                th, td {
+                <!--                    text-align: left;-->
+                <!--                    padding: 16px;-->
+                border: 1px solid #ddd;
+                div.blueTable {
+                font-family: Tahoma, Geneva, sans-serif;
+                border: 1px solid #1C6EA4;
+                background-color: #EEEEEE;
+                width: 100%;
+                text-align: center;
+                border-collapse: collapse;
+                font-size: 14px;
+                }
+                .divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
+                padding: 3px 2px;
+                }
+                .divTable.blueTable .divTableBody .divTableCell {
+                font-size: 13px;
+                }
+                .divTable.blueTable .divTableRow:nth-child(even) {
+                background: #D0E4F5;
+                }
+                .blueTable .tableFootStyle {
+                font-size: 19px;
+                font-weight: bold;
+                color: #FFFFFF;
+                background: #D0E4F5;
+                background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+                background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+                background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+                border-top: 2px solid #444444;
+                }
+                .blueTable .tableFootStyle {
+                font-size: 19px;
+                }
+                .blueTable .tableFootStyle .links {
+                text-align: right;
+                }
+                .blueTable .tableFootStyle .links a{
+                display: inline-block;
+                background: #1C6EA4;
+                color: #FFFFFF;
+                padding: 2px 8px;
+                border-radius: 5px;
+                }
+                .blueTable.outerTableFooter {
+                border-top: none;
+                }
+                .blueTable.outerTableFooter .tableFootStyle {
+                padding: 3px 5px;
+                }
+                /* DivTable.com */
+                .divTable{ display: table; }
+                .divTableRow { display: table-row; }
+                .divTableHeading { display: table-header-group;}
+                .divTableCell, .divTableHead { display: table-cell;}
+                .divTableHeading { display: table-header-group;}
+                .divTableFoot { display: table-footer-group;}
+                .divTableBody { display: table-row-group;}
+
+                }
+                table.blueTable {
+                <!--                    @import url('https://fonts.googleapis.com/css2?family=Cairo&amp;display=swap');-->
+                <!--                    font-family: 'Cairo', sans-serif;-->
+                vertical-align: middle;
+                font-size: 14px;
+                width: 100%;
+                text-align: left;
+                border-collapse: collapse;
+                text-align: right;
+
+                }
+                table.blueTable td, table.blueTable th {
+                padding: 3px 2px;
+                vertical-align: middle;
+                border-collapse: collapse;
+
+                }
+                table.blueTable tbody td {
+                font-size: 14px;
+                vertical-align: middle;
+                width: 900px
+
+
+                }
+                table.blueTable tfoot td {
+                font-size: 14px;
+                }
+                table.blueTable tfoot .links {
+                text-align: center;
+                vertical-align: middle;
+                }
+                table.blueTable tfoot .links a{
+                display: inline-block;
+                background: #1C6EA4;
+                color: #FFFFFF;
+                <!--                        padding: 2px 8px;-->
+                border-radius: 5px;
+                vertical-align: middle;
+                }
+            </style>
+
+
+
+            <t t-foreach="docs" t-as="doc">
+
+                <div class="row">
+                    <div class="column" style="width: 70%">
+                        <table style="border: 1px solid #ffffff;">
+
+
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px;border: 1px solid #ffffff;">
+                                <td style="width: 12% ;vertical-align: middle  ;height:25px;border: 1px solid #ffffff;" align="center" >
+                                    Invoice Issue Date:
+                                </td>
+                                <td style="width: 26%;vertical-align: middle  ;height:25px;text-align: left;border: 1px solid #ffffff;">
+
+                                    <span t-field="doc.invoice_date"/>
+
+
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px;border: 1px solid #ffffff;">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;border: 1px solid #ffffff;"   align="center" class="table-active">
+                                    Invoice Number:
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: left;border: 1px solid #ffffff;">
+
+                                    <span t-field="doc.invoice_date"/>
+                                </td>
+
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px;border: 1px solid #ffffff;">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;border: 1px solid #ffffff;"   align="center" class="table-active">
+                                    Date of Supply:
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;border: 1px solid #ffffff;">
+
+
+                                </td>
+
+                            </tr>
+
+
+
+                        </table>
+                    </div>
+
+                    <div class="column" style="width: 30%">
+                        <table>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px;border: 1px solid #ffffff;">
+
+                                <td style="width: 26%;vertical-align: middle  ;height:25px;border: 1px solid #ffffff;">
+
+                                    فاتورة ضريبية
+                                    <div>
+                                        TAX INVOICE
+                                    </div>
+
+
+
+
+                                </td>
+                                <td style="width: 12% ;vertical-align: middle  ;height:25px;border: 1px solid #ffffff;" align="center"  class="table-active">
+
+                                    <div  style="text-align: center;border-color: #FFFFFF;">
+                                        <img t-if="doc.l10n_sa_qr_code_str"  t-att-src="'/report/barcode/?barcode_type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', quote_plus(doc.l10n_sa_qr_code_str), 110, 110)"/>
+                                    </div>
+
+                                </td>
+
+
+                            </tr>
+
+
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+                <div class="row">
+                    <div class="column" style="width: 50%">
+                        <table>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 12% ;vertical-align: middle  ;height:25px;  background-color: #ddd;" align="left"  class="table-active">
+
+                                    Seller
+
+                                </td>
+
+                                <td style="width: 26%;vertical-align: middle  ;height:25px;text-align: right;  background-color: #ddd" colspan="2">
+                                    البائع
+
+
+
+
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Name:
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.company_id.name"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الاسم:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Building No:
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.company_id.city"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    رقم المبنى:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Street Name:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.company_id.street"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الشارع:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    District:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.company_id.street"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الحي:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    City:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.company_id.city"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    المدينة:
+                                </td>
+
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Country:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.company_id.country_id"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    البلد:
+                                </td>
+
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Postal Code:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.company_id.zip"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الرمز البريدي:
+                                </td>
+
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Additional No.
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.company_id.zip"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الرقم الإضافي:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    VAT Number:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.company_id.vat"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الرقم الضريبي:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    other Seller ID :
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    معرف أخر:
+                                </td>
+
+                            </tr>
+
+                        </table>
+                    </div>
+
+
+                    <div class="column" style="width: 50%">
+                        <table>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 12% ;vertical-align: middle  ;height:25px;  background-color: #ddd;" align="left"  class="table-active">
+
+                                    BUYER
+
+                                </td>
+
+                                <td style="width: 26%;vertical-align: middle  ;height:25px;text-align: right;  background-color: #ddd" colspan="2">
+                                    المشتري
+
+
+
+
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Name:
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.partner_id.name"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الاسم:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Building No:
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.partner_id.city"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    رقم المبنى:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Street Name:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.partner_id.street"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الشارع:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    District:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.partner_id.street"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الحي:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    City:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.partner_id.city"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    المدينة:
+                                </td>
+
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Country:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.partner_id.country_id"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    البلد:
+                                </td>
+
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Postal Code:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.partner_id.zip"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الرمز البريدي:
+                                </td>
+
+                            </tr>
+
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    Additional No.
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.partner_id.zip"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الرقم الإضافي:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    VAT Number:
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+                                    <span t-field="doc.partner_id.vat"/>
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    الرقم الضريبي:
+                                </td>
+
+                            </tr>
+                            <tr style="text-align: center;vertical-align: middle  ;height:25px">
+                                <td style="width: 17%;vertical-align: middle  ;height:25px;text-align: left; "   align="center" class="table-active">
+
+                                    other Seller ID :
+
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px">
+
+                                </td>
+                                <td style="width: 20%;vertical-align: middle  ;height:25px;text-align: right; " dir="rtl">
+
+                                    معرف أخر:
+                                </td>
+
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+                <br></br>
+
+
+                <table>
+                    <thead>
+                        <tr  style="text-align: center;">
+                            <th style="width: 7%;vertical-align: middle  ;height:25px;" align="left" class="table-active">الرقم
+
+                            </th>
+                            <!--                            <th style="width: 7%;vertical-align: middle  ;" align="left" class="table-active">رقم القطعة-->
+                            <!--                                <div>-->
+                            <!--                                    Part No-->
+                            <!--                                </div>-->
+                            <!--                            </th>-->
+
+                            <th style="width: 28%;vertical-align: middle  ;height:25px;" align="center" class="table-active">
+
+                                الصنف
+                            </th>
+
+                            <th style="width: 28%;vertical-align: middle  ;height:25px;" align="center" class="table-active">
+
+                                الوصف
+
+                            </th>
+
+                            <th style="width: 5%;vertical-align: middle;height:25px;" align="center" class="table-active">
+                                الكمية
+
+
+                            </th>
+                            <th style="width: 5%;vertical-align: middle  ;height:25px;" align="cente" class="table-active"> السعر
+
+
+                            </th>
+
+                            <th style="width: 5%;vertical-align: middle  ;height:25px;" align="cente" class="table-active">الخصم
+
+
+                            </th>
+
+                            <th style="width: 12%;vertical-align: middle  ;height:25px;" align="center" class="table-active">
+                                مبلغ الضريبة
+
+
+                            </th>
+
+                            <!--                            <th style="width: 15%;vertical-align: middle  ;" align="center" class="table-active">الإجمالي غير شامل ضريبة القيمة المضافة</th>-->
+                            <th style="width: 15%;vertical-align: middle  ;height:25px;" align="center" class="table-active">
+                                الإجمالي
+
+
+                            </th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-set="counter" t-value="0"/>
+                        <t t-foreach="doc.invoice_line_ids" t-as="line">
+                            <t  t-set="counter" t-value="counter + 1"/>
+                            <!--                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_subtotal" groups="account.group_show_line_subtotals_tax_excluded"/>-->
+                            <!--                            <t t-set="current_subtotal" t-value="current_subtotal + line.price_total" groups="account.group_show_line_subtotals_tax_included"/>-->
+
+                            <!--                            <t t-set="discount_total" t-value="discount_total + ((l.price_unit * l.quantity) - l.price_subtotal)" />-->
+
+                            <tr style="text-align: center;">
+                                <td style="width: 7;vertical-align: middle  ;height:25px;" align="center"><span t-esc="counter"/></td>
+                                <!--                                <td style="width: 28%;vertical-align: middle  ;" align="center"> <span t-field="line.product_id.default_code"/></td>-->
+                                <td style="width: 28%;vertical-align: middle  ;height:25px;" align="center"> <span t-field="line.product_id.name"/></td>
+                                <td style="width: 28%;vertical-align: middle  ;height:25px;" align="center"> <span t-field="line.name"/></td>
+                                <td style="width: 5%;vertical-align: middle  ;height:25px;" align="center"> <span t-field="line.quantity"/></td>
+
+                                <td style="width: 5%;vertical-align: middle  ;height:25px;" align="center"> <span t-field="line.price_unit"/></td>
+                                <td style="width: 5%;vertical-align: middle  ;height:25px;" align="center">
+                                    <span t-esc="'%.2f'%(line.discount)"/>
+
+
+                                    <!--                                    <span t-field="line.discount"/>-->
+
+                                </td>
+                                <td style="width: 12%;vertical-align: middle  ;height:25px;" align="center">
+
+                                    <t t-set="line_tax_total" t-value="(line.price_subtotal * 0.15)"/>
+                                    <!--                                    <sapn t-esc="line_tax_total" />-->
+                                    <span t-esc="'%.2f'%(line_tax_total)"/>
+
+                                </td>
+
+
+                                <td style="width: 15%;vertical-align: middle  ;height:25px;" align="center">
+                                    <t t-set="line_total" t-value="(line.price_subtotal * 0.15) + line.price_subtotal"/>
+                                    <span t-esc="'%.2f'%(line_total)"/>
+
+
+                                </td>
+
+                            </tr>
+
+                        </t>
+<!--                        <tr style="text-align: center;">-->
+<!--                            <td style="width: 50;vertical-align: middle  ;height:25px;" align="center" colspan="4">-->
+
+
+<!--                            </td>-->
+<!--                              <td style="width: 50;vertical-align: middle  ;height:25px;" align="center" colspan="4">-->
+
+
+<!--                            </td>-->
+
+
+<!--                        </tr>-->
+
+
+                    </tbody>
+                </table>
+
+
+                <br></br>
+                <table style="border:1pt solid grey;width:100%;color:black;margin-top:5px; color:black;" class="table table-bordered table-sm">
+                    <thead>
+                        <!--								<t t-set="discount_before_total" t-value="doc.amount_untaxed + discount_total"/>-->
+                        <tr class="text-center">
+                            <td class=""  style="font-weight: bold;border-right:1pt solid grey;text-align:left;padding:3pt;">Total (Excluding VAT)</td>
+                            <td class="text-end arabic" style="border-right:1pt solid grey;text-align:right;padding:3pt;" dir="rtl">الإجمالي (غير شامل ضريبة القيمة المضافة)</td>
+                            <td style="border-right:1pt solid grey;text-align:right;padding:3pt;" class="text-end">
+
+                                <span t-field="doc.amount_untaxed"/>
+
+                                <!--                                        <span t-esc="discount_before_total" />-->
+
+
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="" style="font-weight: bold;border-right:1pt solid grey;text-align:left;padding:3pt;">Total VAT</td>
+                            <td class="text-end arabic" style="border-right:1pt solid grey;text-align:right;padding:3pt;">إجمالي ضريبة القيمة المضافة</td>
+                            <td style="border-right:1pt solid grey;text-align:right;padding:3pt;" class="text-end">
+                                <span t-field="doc.amount_tax"/>
+
+                                <!--                                        <span t-esc="tax_total" />-->
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="" style="font-weight: bold;border-right:1pt solid grey;text-align:left;padding:3pt;">Total Amount Due</td>
+                            <td class="text-end arabic" style="border-right:1pt solid grey;text-align:right;padding:3pt;f">إجمالي المبلغ المستحق</td>
+                            <td style="border-right:1pt solid grey;text-align:right;padding:3pt;" class="text-end">
+
+                                <span t-field="doc.amount_total"/>
+
+                                <!--                                        <span t-esc="doc.amount_residual" />-->
+
+
+                            </td>
+                        </tr>
+
+                        <!--                        <tr>-->
+                        <!--                            <td class="" style="font-weight: bold;border-right:1pt solid grey;text-align:left;padding:3pt;">Gross Amount Customer</td>-->
+                        <!--                            <td class="text-end arabic" style="border-right:1pt solid grey;text-align:right;padding:3pt;f">المستحق علي العميل</td>-->
+                        <!--                            <td style="border-right:1pt solid grey;text-align:right;padding:3pt;" class="text-end">-->
+
+                        <!--                                <span t-field="doc.partner_id.payment_amount_due_amt"/>-->
+
+                        <!--                                &lt;!&ndash;                                        <span t-esc="doc.amount_residual" />&ndash;&gt;-->
+
+
+                        <!--                            </td>-->
+                        <!--                        </tr>-->
+                    </thead>
+                </table>
+
+
+
+
+            </t>
+
+<p>
+
+    Bank Details:
+    <div>
+                                            <span t-field="doc.narration"/>
+
+    </div>
+
+</p>
+
+
+
+
+        </t>
+
+
+
+
+
+    </template>
+
+
+    <record id="paperformat_quotation_2" model="report.paperformat">
+        <field name="name">Leave quotation</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">55</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">37</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report
+            id="print_new_invoice_part"
+            model="account.move"
+            string=" Print Custom Invoice "
+            report_type="qweb-pdf"
+            name="icc_work.invoice_part"
+            file="icc_work.invoice_part"
+            paperformat="icc_work.paperformat_quotation_2"
+    />
+
+</odoo>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="web_layout_web_login_layout" inherit_id="web.layout" name="Web Login Layout">
+        <xpath expr="//title" position="replace">
+            <title t-esc="title or 'Mline Erp'"/>
+        </xpath>
+        <xpath expr="//link[@type='image/x-icon']" position="replace">
+            <link type="image/x-icon" rel="shortcut icon"
+                  t-att-href="x_icon or '/btq_web_base/static/description/favicon.png'"/>
+        </xpath>
+    </template>
+    <template id="sh_backmate_theme_web_login_layout" inherit_id="web.login_layout" name="  Login Layout">
+        <xpath expr="//div[hasclass('container')]" position="replace">
+            <div class="container-fluid mb-5 pb-5">
+                <div class="row sh_backmate_th_login_left_img_st_2">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-12 sh_logo_icon_img">
+                        <div t-attf-class="text-center    ">
+                            <img t-attf-src="/btq_web_base/static/description/logo1.png"
+                                 alt="icon_img" style="max-width: 65%; width:auto"/>
+                        </div>
+                    </div>
+                    <div t-attf-class="card border-0 mx-auto mt-5 bg-100 {{login_card_classes}} o_database_list col-lg-6 col-md-6 col-sm-6 col-12"
+                         style="max-width: 300px;">
+                        <div class="card-body">
+                            <!--  -->
+                            <h1>
+                                <center>
+                                    <span class="sign_in">Sign In</span>
+                                </center>
+                            </h1>
+                            <t t-out="0"/>
+                            <div class="text-center small mt-4 pt-3 border-top" t-if="not disable_footer">
+                                <a href="#" target="_blank">Powered
+                                    by
+                                    <span>Mline TM.</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

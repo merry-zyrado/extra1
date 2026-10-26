@@ -1,0 +1,231 @@
+<odoo>
+    <data>
+
+<!--        <record id="view_product_form_custom_fields" model="ir.ui.view">-->
+<!--        <field name="name">product.template.form.custom.fields</field>-->
+<!--        <field name="model">product.template</field>-->
+<!--        <field name="inherit_id" ref="product.product_template_only_form_view" />-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//group[@name='sales']" position="inside">-->
+<!--                &lt;!&ndash; Add Custom Field &ndash;&gt;-->
+<!--                <field name="prod_disc" />-->
+
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+        <record id="view_account_move_form_id_custom_id_iee" model="ir.ui.view">
+            <field name="name">view.account.move.form.ids</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+
+                <field name="partner_id" position="after">
+                    <field name="project_id" />
+                    <field name="account_custom_id" readonly="1" />
+
+
+
+                </field>
+            </field>
+        </record>
+
+        <record id="view_purchese_order_custom" model="ir.ui.view">
+            <field name="name">view_purchese_order_custom</field>
+            <field name="model">purchase.order</field>
+            <field name="inherit_id" ref="purchase.purchase_order_form"/>
+            <field name="arch" type="xml">
+
+                <field name="partner_ref" position="after">
+                    <field name="consignee_id" />
+                    <field name="invoice_to_id" />
+                    <field name="payment_terms" />
+                    <field name="shipping_terms" />
+                    <field name="delivery_date" />
+                    <field name="comments" />
+
+
+
+                </field>
+            </field>
+        </record>
+        <record id="view_sale_order_custom" model="ir.ui.view">
+            <field name="name">view.sale.order.custom</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+                <field name="partner_id" position="after">
+                    <!--                    <field name="customer_ref" />-->
+                    <field name="attn_ref"
+
+                    >
+
+
+                    </field>
+                    <field name="project_id" />
+
+                    <field name="project_des" />
+                    <field name="status_payment_vatue" />
+
+                    <!--                    <field name="account_id" />-->
+                    <field name="pay_percentage" />
+                    <field name="status_payment" />
+                    <field name="invoice_amount" readonly="1"/>
+                    <field name="amount_due" readonly="1"/>
+                    <field name="date_order_custom" invisible="1"/>
+                    <field name="is_culcu" invisible="1"/>
+                    <field name="is_new_order" readonly="1"/>
+                    <field name="vendor_id" />
+                    <field name="show_photo" />
+
+                </field>
+
+
+
+
+            </field>
+        </record>
+
+        <record id="view_sale_order_custom_but" model="ir.ui.view">
+            <field name="name">view.sale.order.custom.but</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/div/button[@name='action_view_invoice']" position="after">
+
+                    <button name="get_pay_percentage" type="object" class="oe_stat_button" icon="fa-bars"  groups="icc_work.view_qty_price">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Create</span>
+                            <span class="o_stat_text"> Invoice</span>
+                        </div>
+                    </button>
+
+                    <button name="add_vate" type="object" class="oe_stat_button" icon="fa-bars">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Price With</span>
+                            <span class="o_stat_text"> Out Vat </span>
+                        </div>
+                    </button>
+                    <button name="add_with_vat" type="object" class="oe_stat_button" icon="fa-refresh">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Price With</span>
+                            <span class="o_stat_text">  Vat </span>
+                        </div>
+                    </button>
+
+                    <button name="copy_new" type="object" class="oe_stat_button" icon="fa-refresh" groups="icc_work.view_qty_price">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_text">Duplicate</span>
+                            <span class="o_stat_text">  Quotations</span>
+                        </div>
+                    </button>
+
+<!--                    <button name="create_purchase" type="object" class="oe_stat_button" icon="fa-refresh" groups="icc_work.view_qty_price">-->
+<!--                        <div class="o_field_widget o_stat_info">-->
+<!--                            <span class="o_stat_text">Create</span>-->
+<!--                            <span class="o_stat_text">  purchase </span>-->
+<!--                        </div>-->
+<!--                    </button>-->
+
+                </xpath>
+
+            </field>
+
+        </record>
+        <record id="view_partner_id_custom" model="ir.ui.view">
+            <field name="name">view.partner_id.custom</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <field name="vat" position="after">
+                    <!--                    <field name="customer_ref" />-->
+
+                </field>
+            </field>
+
+        </record>
+
+        <record id="view_sale_order_custom_page" model="ir.ui.view">
+            <field name="name">view.sale.order.custom.page</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet/notebook/page" position="after">
+                    <page string="Invoice With Project">
+                        <field name="account_id" readonly="1" domain="[('move_type', '=', 'out_invoice')]">
+                        </field>
+
+                    </page>
+                    <page string="Delivery Note">
+
+                        <button name="get_items" string="add_items"
+                                type="object" class="oe_highlight"
+                        />
+
+                        <field name="rec_line" >
+                            <tree editable="bottom">
+                                <field name="sale_id" invisible="1"/>
+                                <field name="code" />
+                                <field name="name" />
+                                <field name="date_recipt" />
+                                <field name="account" />
+                                <field name="is_active" />
+                            </tree>
+                        </field>
+                    </page>
+                    <page string="Quotations Details">
+                        <group >
+                            <field name="dear" />
+                            <field name="terms" />
+                            <field name="terms_payment" />
+                            <field name="the_language" />
+                            <field name="appendix" />
+                        </group>
+
+                    </page>
+
+                    <page string="Receipt Voucher ">
+                        <group >
+                            <field name="number_of_de" />
+                            <field name="voucher_date" />
+                            <field name="recived_partner_id" />
+                            <field name="sum_amount" />
+                            <field name="check_number" />
+                            <field name="check_date" />
+                            <field name="the_for" />
+
+
+                        </group>
+
+                    </page>
+
+
+                </xpath>
+            </field>
+
+
+
+
+        </record>
+
+
+        <record model="ir.ui.view" id="sale_order_view_inherit">
+            <field name="name">sale.order.view.inherit1</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='price_subtotal']" position="after">
+                    <field name="is_purchase"/>
+                </xpath>
+                                <xpath expr="/form/sheet/notebook/page/field[@name='order_line']/tree/field[@name='product_template_id']" position="before">
+                                                   <field name="barcode"/>
+
+
+                                </xpath>
+            </field>
+        </record>
+
+
+
+    </data>
+</odoo>

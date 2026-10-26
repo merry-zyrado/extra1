@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+
+
+    <template id="template_report_payment_total_4">
+
+        <t t-call="web.basic_layout">
+            <t t-set="docs" t-value="docs.with_context()"/>
+            <t t-foreach="docs" t-as="doc">
+                <style>
+                    @import url('https://fonts.googleapis.com/css2?family=Cairo&amp;display=swap');
+                    font-family: 'Cairo', sans-serif;
+                </style>
+                <div class="footer">
+                    وقت طباعة التقرير
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                </div>
+                <span style="font-family: 'Cairo'" align="center">
+                    <center style="font-family: 'Cairo'" align="center">
+
+                        Partner Project Transcions
+                    </center>
+                </span>
+                <br></br>
+                <div style="height:30%">
+                    <table border="1" class="table table-condensed" style="border-style:solid">
+                        <tr style="height:30%">
+                            <td style="border: 1px solid black;color:black;background-color:#5f6162;font-family: 'Cairo'" align="center" class="thead-light">From the date of</td>
+                            <td style="border: 1px solid black;font-family: 'Cairo'" align="center">
+                                <span t-field="docs.date_from"/>
+                            </td>
+                            <td style="border: 1px solid black;color:black;background-color:#5f6162;font-family: 'Cairo'" align="center" class="thead-light">To date</td>
+                            <td style="border: 1px solid black;font-family: 'Cairo'" align="center">
+                                <span t-field="docs.date_to"/>
+                            </td>
+
+                        </tr>
+
+                        <tr style="height:30%">
+                            <td style="border: 1px solid black;color:black;background-color:#5f6162;font-family: 'Cairo'" align="center" class="thead-light">Partner Name</td>
+                            <td style="border: 1px solid black;font-family: 'Cairo'" align="center">
+                                <span t-field="docs.partner_id.name"/>
+                            </td>
+                            <td style="border: 1px solid black;color:black;background-color:#5f6162;font-family: 'Cairo'" align="center" class="thead-light">Project Name</td>
+                            <td style="border: 1px solid black;font-family: 'Cairo'" align="center">
+                                <span t-field="docs.project_ids"/>
+                            </td>
+
+                        </tr>
+                    </table>
+                </div>
+                <div class="page">
+                    <t t-set="net" t-value="0.0"/>
+                    <t t-set="net2" t-value="0.0"/>
+                    <table border="1" class="table table-condensed"
+                           style="border-style:solid; text-align:center;">
+                        <tr style="background-color:#5f6162;font-family: 'Cairo'">
+                            <th style="border: 1px solid black;color:white;font-family: 'Cairo'" class="thead-light">Project Total Amount</th>
+                            <th style="border: 1px solid black;color:white;font-family: 'Cairo'" class="thead-light">Payment Date </th>
+                            <th style="border: 1px solid black;color:white;font-family: 'Cairo'" class="thead-light">Debit </th>
+                            <th style="border: 1px solid black;color:white;font-family: 'Cairo'" class="thead-light">Credit </th>
+                            <th style="border: 1px solid black;color:white;font-family: 'Cairo'" class="thead-light">Balance </th>
+
+                        </tr>
+
+                        <tr style="height:30%; text-align:center;font-family: 'Cairo'">
+
+                            <t t-set="counter" t-value="0"/>
+                            <tr t-foreach="docs.get_action_print_product_onhand_summary_pdf()" t-as="track">
+                                <tr>
+                                    <t  t-set="counter" t-value="counter + 1"/>
+                                    <td t-esc="track['project_name'] or ''" style="border: 1px solid black;font-family: 'Cairo'" class="thead-light" colspan="5"/>
+                                </tr>
+                                <tr>
+
+                                    <td t-esc="track['project_total'] or ''" style="border: 1px solid black;font-family: 'Cairo'" class="thead-light"/>
+                                    <td t-esc="track['payment_date'] or '-'" style="border: 1px solid black;font-family: 'Cairo'" class="thead-light"/>
+                                    <td t-esc="track['debit'] or '0'" style="border: 1px solid black;font-family: 'Cairo'" class="thead-light">
+
+
+                                    </td>
+                                    <td t-esc="track['credit'] or '0'" style="border: 1px solid black;font-family: 'Cairo'" class="thead-light">
+                                    </td>
+                                    <td t-esc="track['balance'] or '0'" style="border: 1px solid black;font-family: 'Cairo'" class="thead-light"/>
+<!--                                                     <t t-set="net2" t-value="net2 + track['credit'] "/>-->
+<!--                                    <t t-set="net" t-value="net + track['debit'] "/>-->
+
+                                </tr>
+
+
+
+                            </tr>
+<!--                            <tr style="background-color:#5f6162;font-family: 'Cairo'">-->
+<!--                                <th style="border: 1px solid black;color:white;font-family: 'Cairo'" class="thead-light" colspan="2">Total</th>-->
+<!--                                <th style="border: 1px solid black;color:white;font-family: 'Cairo'" class="thead-light"><span t-esc="net"/> </th>-->
+<!--                                <th style="border: 1px solid black;color:white;font-family: 'Cairo'" class="thead-light"><span t-esc="net2"/> </th>-->
+<!--                                <th style="border: 1px solid black;color:white;font-family: 'Cairo'" class="thead-light">Balance </th>-->
+
+<!--                            </tr>-->
+                        </tr>
+
+                    </table>
+
+                </div>
+            </t>
+        </t>
+
+    </template>
+    <record id="paperformat_leave_information_sale_id" model="report.paperformat">
+        <field name="name">Leave Information Sale</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">297</field>
+        <field name="page_width">210</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>
+        <field name="margin_bottom">5</field>
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">25</field>
+        <field name="dpi">90</field>
+    </record>
+
+
+    <report id="action_product_onhand_report_4" model="project.report" string=" Partner Project Transcions "
+            report_type="qweb-pdf" name="icc_work.template_report_payment_total_4"
+            file="icc_work.template_report_payment_total_4"
+            paperformat="icc_work.paperformat_leave_information_sale_id"/>
+
+
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_icc_work_icc_work,icc_work.icc_work,model_project_report,base.group_user,1,1,1,1
+access_icc_receipt_report,icc_receipt_r_eport,model_receipt_report,base.group_user,1,1,1,1
