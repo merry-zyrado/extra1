@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document_global_discount" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//t[@t-set='tax_totals']" position="before">
+            <tr class="border-black o_subtotal">
+                <td>
+                    <strong>Untaxed Amount Before Disc</strong>
+                </td>
+                <td class="text-end">
+                    <span t-field="doc.amount_untaxed_before_global_discounts"
+                          t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                </td>
+            </tr>
+            <tr class="border-black o_subtotal">
+                <td>
+                    <strong>Discount</strong>
+                </td>
+                <td class="text-end">
+                    <span t-field="doc.amount_discount"
+                          t-options='{"widget": "monetary", "display_currency": doc.pricelist_id.currency_id}'/>
+                </td>
+            </tr>
+        </xpath>
+    </template>
+</odoo>

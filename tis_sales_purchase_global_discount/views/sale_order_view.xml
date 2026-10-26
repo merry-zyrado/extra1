@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_sale_order_discount_form">
+        <field name="name">sale.order.discount.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='sale_total']" position="before">
+                <group colspan="2" class="oe_left">
+                    <field name="discount_for" class="oe_left" widget="radio"/>
+                    <field name="discount_type" class="oe_left"
+                           attrs="{'required': [('discount_for', '!=', False)]}"/>
+                    <field name="discount_rate"
+                           attrs="{'required': [('discount_type', '!=', False)]}"/>
+                    <field name="discount_narration"/>
+                    <field name="analytic_id"
+                           groups="analytic.group_analytic_accounting"/>
+                </group>
+            </xpath>
+            <field name="tax_totals" position="before">
+                <field name="amount_untaxed_before_global_discounts"/>
+                <div class="oe_subtotal_footer_separator oe_inline o_td_label"
+                     invisible="1">
+                    <label for="amount_grand"/>
+                </div>
+                <field name="amount_grand" nolabel="1"
+                       class="oe_subtotal_footer_separator" widget='monetary'
+                       options="{'currency_field': 'currency_id'}"
+                       invisible="1"/>
+                <!--                attrs="{'invisible': ['|', ('discount_for', '=', 'untaxed'), ('discount_for', '=', False)]}"-->
+                <field name="amount_discount" widget='monetary'
+                       options="{'currency_field': 'currency_id'}"/>
+                <field name="amount_total" widget="monetary" readonly="1"
+                       force_save="1" invisible="1"/>
+
+            </field>
+        </field>
+    </record>
+    <record id="view_quotation_tree_inherited" model="ir.ui.view">
+        <field name="name">sale.order.discount.tree</field>
+        <field name="model">sale.order</field>
+        <field name="priority">4</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='amount_total']" position="replace">
+                <field name="amount_total" sum="Total Tax Included"
+                       widget="monetary" decoration-bf="1" optional="show"
+                       force_save="1"/>
+            </xpath>
+        </field>
+    </record>
+    <template id="portal_sale_global_discount"
+              name="Portal Sale Global discount"
+              inherit_id="sale.sale_order_portal_content_totals_table" priority="20">
+        <xpath expr="//t[@t-set='tax_totals']" position="after">
+            <tr class="border-black o_subtotal">
+                <td>
+                    <strong>Amount Untaxed Before Discount</strong>
+                </td>
+                <td class="text-end">
+                    <span
+                            t-att-class="oe_subtotal_footer_separator"
+                            t-esc="sale_order.amount_untaxed_before_global_discounts"
+                            t-options='{"widget": "monetary", "display_currency": sale_order.pricelist_id.currency_id}'
+                    />
+                </td>
+            </tr>
+            <tr class="border-black o_subtotal">
+                <td>
+                    <strong>Discount</strong>
+                </td>
+                <td class="text-end">
+                    <span
+                            t-att-class="oe_subtotal_footer_separator"
+                            t-esc="sale_order.amount_discount"
+                            t-options='{"widget": "monetary", "display_currency": sale_order.pricelist_id.currency_id}'
+                    />
+                </td>
+            </tr>
+        </xpath>
+    </template>
+</odoo>

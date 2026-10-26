@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+
+
+    <record model="ir.actions.act_window" id="update_project_custom_action">
+      <field name="name">project </field>
+      <field name="res_model">project.project</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('user_id','=',uid)]</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="update_project_custom_action_mytask">
+      <field name="name">MY Task </field>
+      <field name="res_model">project.task</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('user_ids','in',[uid])]</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="update_project_custom_action_mytask_crm">
+      <field name="name">Crm Custom </field>
+      <field name="res_model">crm.lead</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[('user_id','=',uid)]</field>
+    </record>
+
+
+    <menuitem name="MY Project Task" id="update_project.menu_1"  action="update_project_custom_action"
+                web_icon="update_project,static/logo.jpg"
+    />
+
+    <menuitem name="Crm" id="update_project.menu_1_crm"  action="update_project_custom_action_mytask_crm"
+                web_icon="update_project,static/2867297.png"
+    />
+
+
+    <menuitem name="MY Task" id="update_project.menu_1_my_task"  parent="update_project.menu_1"
+
+
+              action="update_project_custom_action_mytask"
+
+    />
+
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="update_project" id="update_project.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 2" id="update_project.menu_2" parent="update_project.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="update_project.menu_1_list" parent="update_project.menu_1"
+              action="update_project.action_window"/>
+    <menuitem name="Server to list" id="update_project" parent="update_project.menu_2"
+              action="update_project.action_server"/>
+-->
+  </data>
+</odoo>
